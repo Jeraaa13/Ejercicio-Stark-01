@@ -71,16 +71,15 @@ def imprimir_promedio(lista:list, clave:str, genero:str) -> str:
 
 def obtener_tipode(lista:list, clave:str):
     contadortipos = {}
-    tipos = []
-    for heroe in lista:
-        tipode = heroe
-        if tipode[clave] in contadortipos:
-            contadortipos[tipode[clave]] += 1            
-        else:
-            contadortipos[tipode[clave]] = 1
-            tipos.append(tipode[clave])
-    for tipo in tipos:
-        if tipo == "":
+
+    for elemento in lista:
+        contadortipos[elemento[clave].capitalize()] = 0
+
+    for elemento in lista:
+        contadortipos[elemento[clave].capitalize()] += 1
+
+    for tipo in contadortipos:
+        if tipo == " ":
             print("No tiene", clave.replace("_", " de "))
         else:
             print("Hay {0} superhéroes con {1} {2}.".format(contadortipos[tipo], clave.replace("_", " de "), tipo))
